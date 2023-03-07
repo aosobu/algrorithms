@@ -1,12 +1,11 @@
-package DataStructures.stack;
+package DataStructures.Stack;
 
+import DataStructures.Auditing.CustomLogger;
 import DataStructures.Exceptions.EmptyStackException;
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.List;
 
 public class LinkedListStack<T> {
-
+    @java.io.Serial
+    static final long serialVersionUID = -7034897190745766939L;
     Node<T> first;
 
     public class Node<T>{
@@ -42,19 +41,9 @@ public class LinkedListStack<T> {
             try {
                 throw new EmptyStackException();
             } catch (EmptyStackException e) {
-                throw new RuntimeException(e);
+                CustomLogger.logWarningMessage("referenced stack cannot be empty");
+                throw new RuntimeException();
             }
         }
-    }
-
-
-    public static void main(String [] args){
-        LinkedListStack<String> stackOfStrings = new LinkedListStack<>();
-
-        System.out.println("Popped Item : " + stackOfStrings.pop());
-
-        stackOfStrings.push("to");
-        stackOfStrings.push("be");
-        stackOfStrings.push("or not");
     }
 }
